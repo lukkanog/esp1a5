@@ -33,14 +33,12 @@ for (i in 1:5) {
   
 }
 
-View(untreated_deaths_by_region_2021)
 
-
-barplot(untreated_deaths_by_region_2019$untreatedDeaths, untreated_deaths_by_region_2019$region_code)    
-barplot(untreated_deaths_by_region_2021$untreatedDeaths, untreated_deaths_by_region_2021$region_code)  
 
 ggplot(untreated_deaths_by_region_2019, aes(x=region_name, y = untreatedDeaths))+ geom_bar(stat = "summary", fun = "median") +
   xlab("Região") +
-  ylab("Mortes não tratadas");
+  ylab("Mortes não tratadas por região");
 
-ggplot(untreated_deaths_by_region_2021, aes(x=region_name, y = untreatedDeaths))+ geom_bar(stat = "summary", fun = "median") + xlab("Região") + ylab("Mortes não tratadas")
+ggplot(untreated_deaths_by_region_2021, aes(x=region_name, y = untreatedDeaths))+ geom_bar(stat = "summary", fun = "median") + 
+  xlab("Região") +
+  ylab("Mortes não tratadas");
