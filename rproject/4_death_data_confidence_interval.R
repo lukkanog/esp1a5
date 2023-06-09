@@ -1,3 +1,6 @@
+##### Intervalos de Confiança
+conf_level <- 0.9  # Nível de confiança desejado
+
 for (i in 1:nrow(death_data_pre_pandemic)) {
   region <- death_data_pre_pandemic$region_name[i]
   homicide <- death_data_pre_pandemic$homicideCount[i]
