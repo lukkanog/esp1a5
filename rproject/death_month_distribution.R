@@ -29,15 +29,28 @@ ggplot(MORTALIDADE_DURANTE_PANDEMIA_SAMPLE, aes(x = MES)) +
 
 
 ggplot(MORTALIDADE_PRE_PANDEMIA_SAMPLE, aes(x = ANOS_DE_IDADE)) +
-  geom_histogram(binwidth = 5, boundary = 0, fill = "lightblue", color = "black") +
+  geom_histogram(binwidth = 5, boundary = 0, fill = "steelblue", color = "black") +
   labs(title = "Distribuição de Idades",
        x = "Anos de Idade",
        y = "Contagem") +
   theme_minimal()
 
 ggplot(MORTALIDADE_DURANTE_PANDEMIA_SAMPLE, aes(x = ANOS_DE_IDADE)) +
-  geom_histogram(binwidth = 5, boundary = 0, fill = "lightblue", color = "black") +
+  geom_histogram(binwidth = 5, boundary = 0, fill = "steelblue", color = "black") +
   labs(title = "Distribuição de Idades",
        x = "Anos de Idade",
        y = "Contagem") +
+  theme_minimal()
+
+
+ggplot(MORTALIDADE_PRE_PANDEMIA_SAMPLE, aes(y = ANOS_DE_IDADE)) +
+  geom_boxplot(fill = "lightblue", color = "black") +
+  labs(title = "Boxplot de Idades",
+       y = "Anos de Idade") +
+  theme_minimal()
+
+ggplot(MORTALIDADE_DURANTE_PANDEMIA_SAMPLE, aes(y = ANOS_DE_IDADE)) +
+  geom_boxplot(fill = "lightblue", color = "black") +
+  labs(title = "Boxplot de Idades",
+       y = "Anos de Idade") +
   theme_minimal()
