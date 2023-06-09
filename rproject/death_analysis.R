@@ -18,7 +18,6 @@ for (i in seq_len(5)) {
                         totalDeaths = sum(MORTALIDADE_PRE_PANDEMIA_SAMPLE$CODMUNRES == i),
                         untreatedDeaths = sum(MORTALIDADE_PRE_PANDEMIA_SAMPLE$CODMUNRES == i & MORTALIDADE_PRE_PANDEMIA_SAMPLE$ASSISTMED == 2, na.rm = TRUE),
                         homicideCount = sum(MORTALIDADE_PRE_PANDEMIA_SAMPLE$CODMUNRES == i & MORTALIDADE_PRE_PANDEMIA_SAMPLE$CIRCOBITO == 3, na.rm = TRUE))
-  new_row$percentual = (new_row$homicideCount/new_row$totalDeaths)*100;
   death_data_pre_pandemic <- rbind(death_data_pre_pandemic, new_row)
   
 }
@@ -30,7 +29,6 @@ for (i in 1:5) {
                         totalDeaths = sum(MORTALIDADE_DURANTE_PANDEMIA_SAMPLE$CODMUNRES == i),
                         untreatedDeaths = sum(MORTALIDADE_DURANTE_PANDEMIA_SAMPLE$CODMUNRES == i & MORTALIDADE_DURANTE_PANDEMIA_SAMPLE$ASSISTMED == 2, na.rm = TRUE),
                         homicideCount = sum(MORTALIDADE_DURANTE_PANDEMIA_SAMPLE$CODMUNRES == i & MORTALIDADE_DURANTE_PANDEMIA_SAMPLE$CIRCOBITO == 3, na.rm = TRUE))
-  new_row$percentual = (new_row$homicideCount/new_row$totalDeaths)*100;
   death_data_during_pandemic <- rbind(death_data_during_pandemic, new_row)
   
 }
@@ -124,6 +122,7 @@ for (i in 1:nrow(death_data_during_pandemic)) {
   # Cálculo da média e do desvio padrão
   mean_untreated <- untreated / n
   sd_untreated <- sqrt(untreated * (1 - untreated/n) / n)
+  sd_untreated <- 4.93/ sqrt(100)
   
   # Cálculo do intervalo de confiança usando qnorm()
   z_value <- qnorm((1 - conf_level) / 2)
@@ -134,6 +133,4 @@ for (i in 1:nrow(death_data_during_pandemic)) {
   cat("Região:", region, "\n")
   cat("Intervalo de Confiança: (", lower_bound, ", ", upper_bound, ")\n\n")
 }
-
-
 

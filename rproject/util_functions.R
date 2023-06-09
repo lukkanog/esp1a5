@@ -28,3 +28,34 @@ nome_regiao <- function(codigo) {
                    "0" = "Região inválida")  # Código inválido
   return(regiao)
 }
+
+calcularIdadeEmAnos <- function(idade) {
+  # Verifica se a idade é maior que 100 anos
+  if (substr(idade, 1, 1) == "5") {
+    return(as.numeric(substr(idade, 2, 3)))
+  }
+  
+  # Verifica a unidade da idade
+  unidade <- as.numeric(substr(idade, 1, 1))
+  
+  # Verifica a quantidade de unidades
+  quantidade <- as.numeric(substr(idade, 2, 3))
+  
+  # Calcula a idade em anos
+  if (unidade == 1) {
+    # Idade em minutos
+    return(quantidade / 525600)
+  } else if (unidade == 2) {
+    # Idade em horas
+    return(quantidade / 8760)
+  } else if (unidade == 3) {
+    # Idade em meses
+    return(quantidade / 12)
+  } else if (unidade == 4) {
+    # Idade em anos
+    return(quantidade)
+  } else {
+    # Idade desconhecida ou ignorada
+    return(NA)
+  }
+}
