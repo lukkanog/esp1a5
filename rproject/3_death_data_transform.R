@@ -47,4 +47,23 @@ ggplot(death_data_during_pandemic, aes(x=region_name, y= homicideCount ))+ geom_
   ylab("Homicidios 2020-2021");
 
 
+# Gráficos de setores
+ggplot(death_data_pre_pandemic, aes(x = "", y = homicideCount, fill = region_name)) +
+  geom_bar(stat = "identity") +
+  coord_polar("y", start = 0) +
+  xlab("") +
+  ylab("") +
+  ggtitle("Distribuição de Mortes por Homicídio (Período Pré-pandemia)") +
+  theme_void() +
+  labs(fill = "Região")
+
+ggplot(death_data_during_pandemic, aes(x = "", y = homicideCount, fill = region_name)) +
+  geom_bar(stat = "identity") +
+  coord_polar("y", start = 0) +
+  xlab("") +
+  ylab("") +
+  ggtitle("Distribuição de Mortes por Homicídio (Período durante a Pandemia)") +
+  theme_void() +
+  labs(fill = "Região")
+
 
