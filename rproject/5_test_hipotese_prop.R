@@ -53,21 +53,24 @@ ggplot(df, aes(x = group, y = proportion)) +
   theme_minimal()
 
 
-#### DAQUI PRA BAIXO TEM MUITO PRA CORRIGIR
-p <- ((x + y) / (nx + ny))
-se <- sqrt(p * (1 - p) * (1 / nx + 1 / ny))
+##########################
 
+p <- (successes1 + successes2) / (observations1 + observations2)
+se <- sqrt(p * (1 - p) * (1 / observations1 + 1 / observations2))
 
 lcl <- round(prop.test.result$conf.int[1], 3)
 ucl <- round(prop.test.result$conf.int[2], 3)
+
 data.frame(d = -1:1 / 10) %>%
-  mutate(density = dnorm(x = d, mean = (successes1/observations1) - (successes2/observations2), sd = se)) %>%
+  mutate(density = dnorm(x = d, mean = successes1/observations1 - successes2/observations2, sd = se)) %>%
   mutate(rr = ifelse(d < lcl | d > ucl, density, 0)) %>%
   ggplot() +
   geom_line(aes(x = d, y = density)) +
   geom_area(aes(x = d, y = rr), fill = "red", alpha = 0.5) +
-  geom_vline(aes(xintercept = (successes1/observations1) - (successes2/observations2)), color = "blue") +
+  geom_vline(aes(xintercept = successes1/observations1 - successes2/observations2), color = "blue") +
   labs(title = bquote("Diferença entre proporções bilateral"),
        x = "d",
-       y = "Densidade") +
-  theme(legend.position="none")
+       y = "Densidade",
+       fill = "Área destacada",
+       color = "Linha vertical") +
+  theme(legend.position = "right")
