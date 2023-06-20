@@ -13,3 +13,5 @@ Para executar os scripts R neste projeto, é necessário baixar os seguintes arq
 Certifique-se de que os arquivos estejam exatamente com esses nomes e com a extensão .csv. Eles são necessários para que os scripts R funcionem corretamente.
 
 Após baixar os arquivos e colocá-los na pasta rproject/data, você estará pronto para executar os scripts R deste projeto.
+
+Os scripts estão numerados de 0 a 5, indicando a ordem que devem ser rodados (do menor para o maior).
