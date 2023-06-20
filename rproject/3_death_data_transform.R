@@ -47,4 +47,35 @@ ggplot(death_data_during_pandemic, aes(x=region_name, y= homicideCount ))+ geom_
   ylab("Homicidios 2020-2021");
 
 
+# Gráficos de setores
+ggplot(death_data_pre_pandemic, aes(x = "", y = homicideCount, fill = region_name)) +
+  geom_bar(stat = "identity") +
+  coord_polar("y", start = 0) +
+  xlab("") +
+  ylab("") +
+  ggtitle("Distribuição de Mortes por Homicídio (Período Pré-pandemia)") +
+  theme_void() +
+  labs(fill = "Região")
+
+ggplot(death_data_during_pandemic, aes(x = "", y = homicideCount, fill = region_name)) +
+  geom_bar(stat = "identity") +
+  coord_polar("y", start = 0) +
+  xlab("") +
+  ylab("") +
+  ggtitle("Distribuição de Mortes por Homicídio (Período durante a Pandemia)") +
+  theme_void() +
+  labs(fill = "Região")
+
+# Grafico de barras empilhadas
+homicide_counts <- rbind(death_data_pre_pandemic[, c("region_name", "homicideCount")], 
+                         death_data_during_pandemic[, c("region_name", "homicideCount")])
+homicide_counts$period <- rep(c("Antes da pandemia", "Durante a pandemia"), each = nrow(death_data_pre_pandemic))
+
+ggplot(homicide_counts, aes(x = region_name, y = homicideCount, fill = period)) +
+  geom_bar(stat = "identity", position = "stack") +
+  xlab("Região") +
+  ylab("Contagem de Homicídios") +
+  ggtitle("Contagem de Homicídios antes e durante a pandemia por região") +
+  labs(fill = "Período")
+  theme_minimal()
 
